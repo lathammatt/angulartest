@@ -1,11 +1,15 @@
 "use strict";
 
-app.controller("NavCtrl", function($scope){
+app.controller("NavCtrl", function($scope) {
 	$scope.navItems = [
 		{
-			name: "Logout",
+			name: "Logout", 
 			url: "#/logout"
-		},
+		}, 
+		{
+			name: "Login", 
+			url: "#/login"
+		}, 
 		{
 			name: "All Items",
 			url: "#/items/list"
@@ -14,5 +18,5 @@ app.controller("NavCtrl", function($scope){
 			name: "New Items",
 			url: "#/items/new"
 		}
-	];
+		];
 });

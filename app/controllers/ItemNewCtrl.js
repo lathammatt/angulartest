@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("ItemNewCtrl", function($scope, ItemStorage, $location){
+app.controller("ItemNewCtrl", function($scope, ItemStorage, $location, AuthFactory){
 	$scope.newTask = {
 		assignedTo: "",
 		dependencies: "",
@@ -8,19 +8,17 @@ app.controller("ItemNewCtrl", function($scope, ItemStorage, $location){
 		isCompleted: false,
 		location: "",
 		task: "",
-		urgency: ""
+		urgency: "",
+		uid: null
 	};
 
 	
 
 	$scope.addNewItem = function(){
-		// $scope.newTask.isCompleted = false;
-		// $scope.newTask.id = ItemStorage.getItemList().length;
-		// console.log("add", $scope.newTask);
+		$scope.newTask.uid = AuthFactory.getUser();
 		ItemStorage.postNewItem($scope.newTask)
 		.then(function(response){
 			$location.url("/items/list");
 		});
-		// $scope.newTask = {};
 	};
 });

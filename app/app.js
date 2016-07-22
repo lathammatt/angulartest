@@ -27,32 +27,19 @@ app.config(function($routeProvider, FBCreds){
 		when('/items/details/:itemId',{
 			templateUrl: 'partials/item-details.html',
 			controller: 'ItemViewCtrl'
+		}).	
+		when("/login", {
+			templateUrl: "partials/login.html",
+			controller: "LoginCtrl"
 		}).
-		otherwise('/items/list');
+		when("/logout", {
+			templateUrl: "partials/logout.html",
+			controller: "LogoutCtrl"
+		}).
+		otherwise("/items/list");
 });
 
 
 
 
-
-
-
-// app.controller("TodoCtrl", function($scope){
-// 	$scope.showListView = true;
-// 	$scope.newTask = {};
-	
-
-// 	$scope.allItem = function(){
-// 		console.log("all");
-// 		$scope.showListView = true;
-// 	};
-
-// 	$scope.newItem = function(){
-// 		console.log("new");
-// 		$scope.showListView = false;
-// 	};
-
-
-
-// });
 

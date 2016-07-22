@@ -1,6 +1,20 @@
 "use strict";
 
-app.factory("ItemStorage", function(FirebaseURL, $q, $http){
+app.factory("ItemStorage", function(FirebaseURL, $q, $http, AuthFactory){
+
+    var putIsCompleted = function(item) {
+        return $q((resolve, reject) => {
+            $http.put(`${FirebaseURL}/items/${item.id}.json`, item)
+            .success((data) => {
+                // console.log("Data from delete", data );
+                resolve(data);
+            })
+            .error((error) => {
+                reject(error);
+            });
+        });
+    };
+
 
 	let getItemList = function(){
         let items = [];
@@ -34,7 +48,24 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http){
         });
 	};
 
-	return {getItemList, postNewItem};
+    var deleteItem = function(listItemID) {
+        console.log(listItemID, "this is delete item");
+        return $q((resolve, reject) => {
+            $http.delete(
+                `${FirebaseURL}/items/${listItemID}.json`
+            )
+            .success((data) => {
+                resolve(data);
+            })
+            .error((error) => {
+                reject(error);
+            });
+        });
+    };
+
+
+
+	return {getItemList, postNewItem, deleteItem, putIsCompleted};
 });	
 
 

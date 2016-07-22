@@ -2,7 +2,6 @@
 
 app.controller("ItemViewCtrl", function($scope, $routeParams, ItemStorage){
 	$scope.items = [];
-	// $scope.selectedItem = null;
 
 
 ItemStorage.getItemList()
