@@ -27,7 +27,11 @@ app.factory("AuthFactory", function(){
 		return currentUserId;
 	};
 
+	let logout = function() {
+    	currentUserId = null;
+ 	};
 
-	return {authWithProvider, isAuthenticated, getUser, currentUserId};
+
+	return {authWithProvider, isAuthenticated, getUser, currentUserId, logout};
 
 });
